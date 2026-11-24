@@ -1,0 +1,34 @@
+(() => {
+  const KEY='hfc-admin-profile-v1';
+  const defaults={name:'Hewad Future Admin',role:'Administrator',department:'Management',email:'admin@hewadfuture.com',phone:'',location:'Afghanistan',website:'hewadfuture.com',about:'Administrator at Hewad Future Consultancy. Supporting strategic planning, business growth, consulting services and digital transformation.',skills:['Strategic Planning','Management','Business Development','Consulting'],joined:new Date().toISOString(),avatar:'',cover:''};
+  const $=id=>document.getElementById(id);
+  const read=(key)=>{try{const v=JSON.parse(localStorage.getItem(key)||'[]');return Array.isArray(v)?v:[]}catch(_){return[]}};
+  let profile;try{profile={...defaults,...JSON.parse(localStorage.getItem(KEY)||'{}')}}catch(_){profile={...defaults}}
+  const save=()=>localStorage.setItem(KEY,JSON.stringify(profile));
+  const initials=name=>(name||'HF').trim().split(/\s+/).slice(0,2).map(x=>x[0]).join('').toUpperCase();
+  const safe=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  function render(){
+    $('profile-name-heading').textContent=profile.name;$('profile-role-heading').textContent=profile.role;$('profile-department-heading').textContent=profile.department||'—';
+    $('profile-email-view').textContent=profile.email||'—';$('profile-location-view').textContent=profile.location||'—';$('profile-phone-view').textContent=profile.phone||'—';$('profile-website-view').textContent=profile.website||'—';
+    $('profile-about-view').textContent=profile.about||'No biography added yet.';$('profile-department-view').textContent=profile.department||'—';$('profile-location-detail').textContent=profile.location||'—';$('profile-website-detail').textContent=profile.website||'—';
+    const joined=new Date(profile.joined);const joinedText=Number.isNaN(joined.getTime())?'November 2026':joined.toLocaleDateString(undefined,{month:'long',year:'numeric'});$('profile-joined-view').textContent=joinedText;$('profile-member-since').textContent=joinedText;
+    $('profile-connection-email').textContent=profile.email||'—';$('profile-connection-website').textContent=profile.website||'—';$('profile-connection-phone').textContent=profile.phone||'Not added';
+    const avatar=$('profile-avatar');avatar.innerHTML=profile.avatar?'<img src="'+profile.avatar+'" alt="Profile photo">':safe(initials(profile.name));
+    const cover=$('profile-cover');if(cover){cover.style.backgroundImage=profile.cover?'linear-gradient(0deg,rgba(5,15,30,.20),rgba(5,15,30,.08)),url("'+profile.cover+'")':'';cover.classList.toggle('has-cover',!!profile.cover)}
+    const team=read('hfc-team'),services=read('hfc-services'),blog=read('hfc-blog'),work=read('hfc-work'),clients=read('hfc-clients');
+    $('profile-stat-projects').textContent=work.length;$('profile-stat-tasks').textContent=team.length+services.length+blog.length+work.length+clients.length;$('profile-stat-team').textContent=team.length;
+    const days=Math.max(1,Math.floor((Date.now()-(new Date(profile.joined).getTime()||Date.now()))/86400000));$('profile-stat-days').textContent=days===1?'1 day':days+' days';
+    $('profile-skills-view').innerHTML=(profile.skills||[]).map((s,i)=>'<div class="hfc-profile-skill"><div><b>'+safe(s)+'</b><span>'+[92,86,80,74,68][i%5]+'%</span></div><i><span style="width:'+[92,86,80,74,68][i%5]+'%"></span></i></div>').join('')||'<p class="hfc-profile-muted">Add your skills using Edit Profile.</p>';
+    renderActivity();const sidebarName=document.querySelector('#admin-user-name');if(sidebarName)sidebarName.textContent=profile.name;window.dispatchEvent(new Event('hfc-profile-updated'));
+  }
+  function renderActivity(){const events=read('hfc-analytics-events').map(e=>({date:e.timestamp||e.date,title:'Website page viewed',detail:e.title||e.page||'A website page'}));const comments=read('hfc-blog-comments').map(c=>({date:c.createdAt||c.date,title:'Blog comment received',detail:(c.name||'Visitor')+' · '+(c.postTitle||c.title||'Blog post')}));const all=[...events,...comments].sort((a,b)=>new Date(b.date||0)-new Date(a.date||0)).slice(0,12);$('profile-activity-list').innerHTML=all.length?all.map(e=>'<div class="hfc-profile-activity-item"><span>✦</span><div><b>'+safe(e.title)+'</b><small>'+safe(e.detail)+'</small></div><time>'+safe(e.date?new Date(e.date).toLocaleString():'Recently')+'</time></div>').join(''):'<div class="hfc-profile-empty">No recent activity has been recorded in this browser yet.</div>'}
+  function openModal(){const f=$('profile-edit-form');Object.entries(profile).forEach(([k,v])=>{const el=f.elements.namedItem(k);if(el)el.value=Array.isArray(v)?v.join(', '):v||''});$('profile-edit-modal').hidden=false;document.body.classList.add('profile-modal-open')}
+  function closeModal(){$('profile-edit-modal').hidden=true;document.body.classList.remove('profile-modal-open')}
+  $('profile-edit-btn').addEventListener('click',openModal);document.querySelectorAll('[data-close-profile]').forEach(b=>b.addEventListener('click',closeModal));
+  $('profile-edit-form').addEventListener('submit',e=>{e.preventDefault();const f=e.currentTarget;['name','role','department','email','phone','location','website','about'].forEach(k=>profile[k]=f.elements[k].value.trim());profile.skills=f.elements.skills.value.split(',').map(s=>s.trim()).filter(Boolean).slice(0,12);save();render();closeModal();});
+  $('profile-avatar-file').addEventListener('change',e=>{const file=e.target.files[0];if(!file)return;if(file.size>2*1024*1024){alert('Please choose an image smaller than 2 MB.');e.target.value='';return}const reader=new FileReader();reader.onload=()=>{profile.avatar=reader.result;save();render()};reader.readAsDataURL(file)});
+  $('profile-cover-file').addEventListener('change',e=>{const file=e.target.files[0];if(!file)return;if(file.size>5*1024*1024){alert('Please choose a cover image smaller than 5 MB.');e.target.value='';return}const reader=new FileReader();reader.onload=()=>{profile.cover=reader.result;save();render()};reader.readAsDataURL(file)});
+  document.querySelectorAll('[data-profile-tab]').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('[data-profile-tab]').forEach(b=>b.classList.toggle('active',b===btn));document.querySelectorAll('.hfc-profile-tab').forEach(p=>p.classList.toggle('active',p.id==='profile-tab-'+btn.dataset.profileTab));}));
+  $('profile-share-btn').addEventListener('click',async()=>{const url=location.href;try{if(navigator.share)await navigator.share({title:profile.name+' | Hewad Future Consultancy',url});else{await navigator.clipboard.writeText(url);$('profile-share-btn').textContent='✓ Link copied';setTimeout(()=>$('profile-share-btn').textContent='↗ Share',1800)}}catch(_){}});
+  window.addEventListener('storage',render);render();
+})();

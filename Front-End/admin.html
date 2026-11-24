@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Admin | Hewad Future Consultancy</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"></noscript>
+    <link rel="stylesheet" href="assets/style/style.css" />
+  </head>
+
+  <body class="admin-auth" data-page="auth">
+    <!-- Main content -->
+
+    <main class="admin-card">
+      <a class="brand" href="index.html" aria-label="Back to website">
+        <img
+          src="assets/Image/logo/hfc-logo.svg"
+          alt="Hewad Future Consultancy logo"
+          class="brand-mark"
+        />
+        <span class="brand-name">Hewad Future<span>Consultancy</span></span>
+      </a>
+
+      <h1>Admin <span class="gradient-text">Panel</span></h1>
+
+      <div class="admin-tabs">
+        <button type="button" class="active" data-form="signup-form">
+          Sign up
+        </button>
+        <button type="button" data-form="login-form">Log in</button>
+      </div>
+
+      <!-- Form Singnup -->
+
+      <form id="signup-form" class="admin-form">
+        <label class="admin-field">
+          <span>Full name</span>
+          <input type="text" name="name" required autocomplete="name" />
+        </label>
+
+        <label class="admin-field">
+          <span>Email</span>
+          <input type="email" name="email" required autocomplete="email" />
+        </label>
+
+        <label class="admin-field">
+          <span>Password (min. 6 characters)</span>
+          <input
+            type="password"
+            name="password"
+            minlength="6"
+            required
+            autocomplete="new-password"
+          />
+          <button
+            class="password-toggle"
+            type="button"
+            aria-label="Show password"
+            title="Show password"
+          >
+            <span class="eye-on">&#128065;</span
+            ><span class="eye-off" style="display: none">&#128065;&#8212;</span>
+          </button>
+        </label>
+
+        <label class="admin-field">
+          <span>Confirm password</span>
+          <input
+            type="password"
+            name="confirm"
+            required
+            autocomplete="new-password"
+          />
+          <button
+            class="password-toggle"
+            type="button"
+            aria-label="Show password"
+            title="Show password"
+          >
+            <span class="eye-on">&#128065;</span
+            ><span class="eye-off" style="display: none">&#128065;&#8212;</span>
+          </button>
+        </label>
+
+        <button class="button">Create admin account</button>
+        <a class="button button-outline" href="index.html"> Back to Home </a>
+      </form>
+
+      <!-- Log in Form -->
+
+      <form id="login-form" class="admin-form" hidden>
+        <label class="admin-field">
+          <span>Email</span>
+          <input type="email" name="email" required autocomplete="email" />
+        </label>
+
+        <label class="admin-field">
+          <span>Password</span>
+          <input
+            type="password"
+            name="password"
+            required
+            autocomplete="current-password"
+          />
+          <button
+            class="password-toggle"
+            type="button"
+            aria-label="Show password"
+            title="Show password"
+          >
+            <span class="eye-on">&#128065;</span
+            ><span class="eye-off" style="display: none">&#128065;&#8212;</span>
+          </button>
+        </label>
+        <button class="button">Log in</button>
+        <a class="button button-outline" href="index.html"> Back to Home </a>
+      </form>
+
+      <p id="auth-message" class="admin-message" role="alert"></p>
+    </main>
+
+  <script src="assets/js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#081225" />
+    <meta
+      name="description"
+      content="Insights, strategies and perspectives from Hewad Future Consultancy (HFC)."
+    />
+    <title>Blog | Hewad Future Consultancy</title>
+
+    <!-- Restore the saved theme before the page is painted -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      onload="
+        this.onload = null;
+        this.rel = 'stylesheet';
+      "
+    />
+    <noscript
+      ><link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+    /></noscript>
+    <link rel="stylesheet" href="assets/style/style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <!-- Header -->
+
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a
+          class="brand"
+          href="index.html"
+          aria-label="Hewad Future Consultancy home"
+        >
+          <img
+            src="assets/Image/logo/hfc-logo.svg"
+            alt="Hewad Future Consultancy logo"
+            class="brand-mark"
+          />
+          <span class="brand-name">Hewad Future<span>Consultancy</span></span>
+        </a>
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="primary-nav"
+          aria-label="Open navigation"
+        >
+          ☰
+        </button>
+        <nav class="primary-nav" id="primary-nav" aria-label="Main navigation">
+          <a href="index.html" data-page="index.html">Home</a>
+          <div class="nav-item dropdown">
+            <button
+              class="dropdown-btn"
+              aria-expanded="false"
+              aria-haspopup="true"
+            >
+              About
+              <span class="dropdown-arrow">⌄</span>
+            </button>
+
+            <ul class="dropdown-menu">
+              <li>
+                <a href="about.html" data-page="about.html">About Us</a>
+              </li>
+              <li>
+                <a href="our-work.html" data-page="our-work.html"
+                  >Our Work &amp; Insights</a
+                >
+              </li>
+              <li>
+                <a href="our-team.html" data-page="our-team.html">Our Team</a>
+              </li>
+            </ul>
+          </div>
+
+          <a href="services.html" data-page="services.html">Services</a>
+          <a href="clients.html" data-page="clients.html">Clients</a>
+          <a href="blog.html" data-page="blog.html">Blog</a>
+          <a href="admin/dashboard.html">Dashboard </a>
+          <a href="contact.html" data-page="contact.html">Contact Us</a>
+        </nav>
+
+        <div class="nav-actions">
+          <button
+            class="theme-toggle"
+            type="button"
+            aria-label="Switch to light mode"
+            title="Switch theme"
+          >
+            <span class="theme-icon">☼</span>
+          </button>
+          <a class="button button-small nav-cta" href="contact.html"
+            >Contact Us <span aria-hidden="true">↗</span></a
+          >
+        </div>
+      </div>
+    </header>
+
+    <!-- Page introduction -->
+
+    <main id="main">
+      <section class="section-tint page-hero">
+        <div class="container page-hero-grid">
+          <div>
+            <p class="eyebrow">Insights &amp; Perspectives</p>
+            <h1>
+              Ideas That Move
+              <span class="gradient-text">Business Forward</span>
+            </h1>
+            <p class="hero-lead">
+              Explore expert insights, practical strategies, and fresh
+              perspectives to help your organization grow.
+            </p>
+            <a class="button" href="contact.html">Contact Us <span>↗</span></a>
+          </div>
+          <img
+            src="assets/Image/HFC_image/our-offered-services.webp"
+            width="1200"
+            height="971"
+            fetchpriority="high"
+            decoding="async"
+            alt="Modern collaborative workspace with natural light"
+            loading="lazy"
+          />
+        </div>
+      </section>
+
+      <!-- All posts: category buttons + search + cards -->
+      <section class="section-space">
+        <div class="container">
+          <div class="blog-toolbar">
+            <div
+              class="filter-chips"
+              role="group"
+              aria-label="Filter posts by category"
+            >
+              <button
+                class="filter-chip"
+                type="button"
+                data-category="all"
+                aria-pressed="true"
+              >
+                All
+              </button>
+              <button
+                class="filter-chip"
+                type="button"
+                data-category="Business Strategy"
+                aria-pressed="false"
+              >
+                Business Strategy
+              </button>
+              <button
+                class="filter-chip"
+                type="button"
+                data-category="Leadership"
+                aria-pressed="false"
+              >
+                Leadership
+              </button>
+              <button
+                class="filter-chip"
+                type="button"
+                data-category="Business Growth"
+                aria-pressed="false"
+              >
+                Business Growth
+              </button>
+              <button
+                class="filter-chip"
+                type="button"
+                data-category="Governance &amp; Risk"
+                aria-pressed="false"
+              >
+                Governance &amp; Risk
+              </button>
+              <button
+                class="filter-chip"
+                type="button"
+                data-category="Digital &amp; AI"
+                aria-pressed="false"
+              >
+                Digital &amp; AI
+              </button>
+            </div>
+            <input
+              class="blog-search"
+              type="search"
+              placeholder="Search articles..."
+              aria-label="Search articles"
+            />
+          </div>
+
+          <div class="blog-grid">
+            <article class="blog-card" data-category="Business Strategy">
+              <img
+                src="assets/Image/HFC_image/mission.webp"
+                width="1080"
+                height="540"
+                loading="lazy"
+                decoding="async"
+                alt="Business strategy and planning"
+              />
+              <div class="blog-card-content">
+                <div class="post-meta-row">
+                  <span class="category">Business Strategy</span>
+                  <p class="blog-date">October 20, 2026</p>
+                </div>
+                <h3>
+                  <a href="blog-details.html?post=resilient-business"
+                    >Building a Resilient Business in a Changing Market</a
+                  >
+                </h3>
+                <p>
+                  Discover how strategic planning, innovation, and strong
+                  leadership help businesses adapt and achieve sustainable
+                  growth.
+                </p>
+                <a
+                  class="text-link"
+                  href="blog-details.html?post=resilient-business"
+                  >Read More <span>→</span></a
+                >
+              </div>
+            </article>
+
+            <article class="blog-card" data-category="Business Strategy">
+              <img
+                src="assets/Image/HFC_image/vision.webp"
+                width="834"
+                height="374"
+                loading="lazy"
+                decoding="async"
+                alt="Strategic planning"
+              />
+              <div class="blog-card-content">
+                <div class="post-meta-row">
+                  <span class="category">Business Strategy</span>
+                  <p class="blog-date">October 18, 2026</p>
+                </div>
+                <h3>
+                  <a href="blog-details.html?post=strategic-planning"
+                    >The Power of Strategic Planning</a
+                  >
+                </h3>
+                <p>
+                  Learn how effective planning creates a clear path toward
+                  long-term business success.
+                </p>
+                <a
+                  class="text-link"
+                  href="blog-details.html?post=strategic-planning"
+                  >Read More <span>→</span></a
+                >
+              </div>
+            </article>
+
+            <article class="blog-card" data-category="Leadership">
+              <img
+                src="assets/Image/HFC_image/intro.webp"
+                width="925"
+                height="540"
+                loading="lazy"
+                decoding="async"
+                alt="Business leadership"
+              />
+              <div class="blog-card-content">
+                <div class="post-meta-row">
+                  <span class="category">Leadership</span>
+                  <p class="blog-date">October 15, 2026</p>
+                </div>
+                <h3>
+                  <a href="blog-details.html?post=leadership-that-inspires"
+                    >Leadership That Inspires Results</a
+                  >
+                </h3>
+                <p>
+                  Explore leadership practices that build stronger teams and
+                  improve business performance.
+                </p>
+                <a
+                  class="text-link"
+                  href="blog-details.html?post=leadership-that-inspires"
+                  >Read More <span>→</span></a
+                >
+              </div>
+            </article>
+
+            <article class="blog-card" data-category="Business Growth">
+              <img
+                src="assets/Image/HFC_image/our-work.webp"
+                width="1080"
+                height="608"
+                loading="lazy"
+                decoding="async"
+                alt="Business growth"
+              />
+              <div class="blog-card-content">
+                <div class="post-meta-row">
+                  <span class="category">Business Growth</span>
+                  <p class="blog-date">October 12, 2026</p>
+                </div>
+                <h3>
+                  <a href="blog-details.html?post=challenges-into-opportunities"
+                    >Turning Challenges into Opportunities</a
+                  >
+                </h3>
+                <p>
+                  Discover practical ways to overcome challenges and identify
+                  new growth opportunities.
+                </p>
+                <a
+                  class="text-link"
+                  href="blog-details.html?post=challenges-into-opportunities"
+                  >Read More <span>→</span></a
+                >
+              </div>
+            </article>
+
+            <article class="blog-card" data-category="Governance &amp; Risk">
+              <img
+                src="assets/Image/HFC_image/government-public-sector.webp"
+                width="1200"
+                height="829"
+                loading="lazy"
+                decoding="async"
+                alt="Governance and public sector"
+              />
+              <div class="blog-card-content">
+                <div class="post-meta-row">
+                  <span class="category">Governance &amp; Risk</span>
+                  <p class="blog-date">October 8, 2026</p>
+                </div>
+                <h3>
+                  <a href="blog-details.html?post=governance-and-risk"
+                    >Strengthening Governance and Risk Management</a
+                  >
+                </h3>
+                <p>
+                  How clear governance and a living risk register protect
+                  organizations and build the trust of partners and donors.
+                </p>
+                <a
+                  class="text-link"
+                  href="blog-details.html?post=governance-and-risk"
+                  >Read More <span>→</span></a
+                >
+              </div>
+            </article>
+
+            <article class="blog-card" data-category="Digital &amp; AI">
+              <img
+                src="assets/Image/HFC_image/private-sector.webp"
+                width="1200"
+                height="820"
+                loading="lazy"
+                decoding="async"
+                alt="Digital transformation"
+              />
+              <div class="blog-card-content">
+                <div class="post-meta-row">
+                  <span class="category">Digital &amp; AI</span>
+                  <p class="blog-date">October 5, 2026</p>
+                </div>
+                <h3>
+                  <a href="blog-details.html?post=digital-transformation"
+                    >Digital Transformation for Growing Organizations</a
+                  >
+                </h3>
+                <p>
+                  A practical, step-by-step view of adopting digital tools, data
+                  and AI without disrupting daily operations.
+                </p>
+                <a
+                  class="text-link"
+                  href="blog-details.html?post=digital-transformation"
+                  >Read More <span>→</span></a
+                >
+              </div>
+            </article>
+          </div>
+
+          <p class="blog-empty" hidden>
+            No articles found. Try another word or category.
+          </p>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="section-tint cta-section">
+        <div class="container cta-box">
+          <div>
+            <p class="eyebrow">Your success is our measure of impact.</p>
+            <h2>
+              Your challenges become our challenges.
+              <span class="gradient-text"
+                >Your goals become our priorities.</span
+              >
+            </h2>
+          </div>
+          <a class="button" href="contact.html">Contact Us <span>↗</span></a>
+          <div class="cta-orb"></div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container footer-top">
+        <div class="footer-brand">
+          <a class="brand" href="index.html">
+            <img
+              src="assets/Image/logo/hfc-logo.svg"
+              alt="Hewad Future Consultancy logo"
+              class="brand-mark"
+            />
+            <span class="brand-name">Hewad Future<span>Consultancy</span></span>
+          </a>
+          <p>Building Better Organizations for a Better Future</p>
+        </div>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="our-work.html">Our Work &amp; Insights</a>
+          <a href="our-team.html">Our Team</a>
+          <a href="services.html">Services</a>
+          <a href="clients.html">Clients</a>
+          <a href="blog.html">Blog</a>
+          <a href="contact.html">Contact Us</a>
+        </div>
+        <a class="back-top" href="#main">Back to top ↑</a>
+      </div>
+    
+        <div class="container footer-bottom">
+      <span style="font-weight: 800; height: inherit;">© <span id="current-year">2020</span> Hewad Future Consultancy</span>
+       <span style="font-weight: 800; height: inherit;"><span> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin-house preview-icon"><path d="M15 22a1 1 0 0 1-1-1v-4a1 1 0 0 1 .445-.832l3-2a1 1 0 0 1 1.11 0l3 2A1 1 0 0 1 22 17v4a1 1 0 0 1-1 1z"/><path d="M18 10a8 8 0 0 0-16 0c0 4.993 5.539 10.193 7.399 11.799a1 1 0 0 0 .601.2"/><path d="M18 22v-3"/><circle cx="10" cy="10" r="3"/></svg></span> Kabul, Afghanistan</span>
+      <a href="mailto:info@hewadfuture.com" style="font-weight: 800; height: inherit;"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail preview-icon"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span>  info@hewadfuture.com</a>
+    </div>
+    
+      </div> 
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/analytics-tracker.js"></script>
+</body>
+</html>
